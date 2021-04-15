@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fudan.weblab2.repository.UserRepository">
+
+    <resultMap id="BaseResultMap" type="com.fudan.weblab2.entity.User">
+        <result column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="gender" jdbcType="INTEGER" property="gender"/>
+    </resultMap>
+
+    <select id="findUserById" resultType="com.fudan.weblab2.entity.User">
+        select *
+        from weblab2.user
+        where id = #{id}
+    </select>
+
+    <insert id="addNewUser">
+        insert into weblab2.user(id, password, age, gender)
+        values (#{id}, #{password}, #{age}, #{gender})
+    </insert>
+
+    <select id="listAll" resultType="com.fudan.weblab2.entity.User">
+        select *
+        from weblab2.user
+    </select>
+
+
+</mapper>
